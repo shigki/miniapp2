@@ -1,14 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Miniapp</title>
+  <title></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo">Blogapp</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a class="waves-effect waves-light btn">Button</a></li>
+        <li><a class="waves-effect waves-light btn">Button <i class="material-icons right">cloud</i></a></li>
+      </ul>
+    </div>
+  </nav>
 <%= yield %>
+        <footer class="page-footer">
+          <div class="footer-copyright">
+            <div class="container">
+            © 2014 Copyright Text
+            </div>
+          </div>
+        </footer>
 
 </body>
 </html>
