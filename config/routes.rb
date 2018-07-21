@@ -2,6 +2,6 @@
   devise_for :users
   root 'blogs#index'
   
-  resources :blogs
+  resources :blogs, only: [:create, :update, :destroy, :new, :index, :edit]
   resources :users, only: [:show]
  end
