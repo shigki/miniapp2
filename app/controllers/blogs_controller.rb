@@ -15,23 +15,18 @@ class BlogsController < ApplicationController
   end
 
   def destroy
-    blog = Blog.find(params[:id])
     if blog.user_id == current_user.id
       blog.destroy
     end
   end
 
   def edit
-    @blog = Blog.find(params[:id])
   end
 
   def show
-    @blog = Blog.find(params[:id])
-    # @comments = @tweet.comments.includes(:user)
   end
 
   def update
-    blog = Blog.find(params[:id])
     if blog.user_id == current_user.id
       blog.update(blog_params)
     end
