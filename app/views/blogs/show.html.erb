@@ -11,24 +11,12 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 </head>
 <body>
-<%= form_for @blog do |form| %>
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :title %>
-  </div>
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.text_area :image, id: :image %>
+<div class ="contents row">
+  <div class="card-image waves-effect waves-block waves-light" style="background-image: url(<%= blog.image%>); height: 300px; background-size: 500px;background-repeat: no-repeat;">
   </div>
 
-  <div class="field">
-    <%= form.label :text %>
-    <%= form.text_area :text, id: :text %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit "投稿する" %>
-  </div>
-<% end %>
+    タイトル：<%= @blog.title %>
+    <%= simple_format(@blog.text) %>
+</div>
 </body>
 </html>

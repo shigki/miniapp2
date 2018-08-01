@@ -9,11 +9,15 @@
 <body>
   <nav>
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo">blogsapp</a>
+      <a href="/blogs/" class="brand-logo">blogsapp</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        
-        <li><a href="badges.html">ログアウト</a></li>
+        <% if user_signed_in? %>
+        <li><%= link_to "サインアウト", destroy_user_session_path, method: :delete %></li>
         <li><a href="/blogs/new">blogを書く</a></li>
+        <% else %>
+        <li><a href="http://localhost:3000/users/sign_in">ログイン</a></li>
+        <li><a href="/users/sign_up">新規登録</a></li>
+        <% end %>
       </ul>
     </div>
   </nav>
