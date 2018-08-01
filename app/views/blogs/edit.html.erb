@@ -9,7 +9,17 @@
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-  </head> 
+  </head>
+
+  <% if @blog.errors.any? %>
+  <div id="error_explanation">
+    <ul>
+    <% @blog.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
 
 	<div class="contents row">
 		<%= form_tag("/blogs/#{@blog.id}", method: :patch ) do %>
