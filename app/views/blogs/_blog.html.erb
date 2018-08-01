@@ -8,8 +8,9 @@
     </div>
   </div>
   <a class="waves-effect waves-light btn-small" href="/blogs/<%= blog.id %>">このblogを読む  / </a>
-  
-  <a class="waves-effect waves-light btn-small" href="/blogs/<%=blog.id%>/edit">あなたのこのblog編集する  / </a>
-  <a class="waves-effect waves-light btn-small">このblogを削除する</a>
-  
+  <% if user_signed_in? && current_user.id == blog.user_id %>
+    <a class="waves-effect waves-light btn-small" href="/blogs/<%=blog.id%>/edit">あなたのこのblog編集する  / </a>
+    <!-- <a class="waves-effect waves-light btn-small" href="/blogs/#{blog.id}", method: :delete %>このblogを削除する</a> -->
+    <%= link_to "このblogを削除する", blog_path(blog), class:"waves-effect waves-light btn-small", method: :delete %>
+  <% end %>
 <script type="text/javascript" src="./app.js"></script>
