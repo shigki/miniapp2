@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 	def show
+		user = User.find(params[:id])
 		@nickname = current_user.nickname
-		@blog = Blog.where(user_id: current_user.id).page(params[:page]).per(5).order("created_at DESC")
+		@blogs = user.blogs.page(params[:page]).per(5).order('created_at desc')
 	end
 end
