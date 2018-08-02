@@ -11,7 +11,12 @@ class BlogsController < ApplicationController
   end
 
   def create
-    Blog.create(title: blog_params[:title], image: blog_params[:image], text: blog_params[:text], user_id: current_user.id)
+    @blog = Blog.create(title: blog_params[:title], image: blog_params[:image], text: blog_params[:text], user_id: current_user.id)
+    if @blog.save
+      render action: :create
+    else
+      render action: :new
+    end
   end
 
   def destroy
