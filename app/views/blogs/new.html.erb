@@ -11,16 +11,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
   </head>
   <body>
-      <% if @blog.errors.any? %>
-        <div id="error_explanation" class="alert alert-danger">
-          <h2><%= pluralize(@blog.errors.count, "error") %> prohibited this post from being saved:</h2>
-          <ul>
-          <% @blog.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-          </ul>
-        </div>
-      <% end %>
+    <%= render partial: "error_message" %>
     <%= form_for @blog do |form| %>
       <div class="field">
         <%= form.label :title %>
