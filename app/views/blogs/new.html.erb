@@ -1,34 +1,44 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>blogsapp</title>
-  <style type="text/css" href="./style.css"></style>
+  <head>
+    <title>blogsapp</title>
+    <style type="text/css" href="./style.css"></style>
 
-    <!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+      <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-</head>
-<body>
-<%= form_for @blog do |form| %>
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :title %>
-  </div>
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.text_area :image, id: :image %>
-  </div>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  </head>
+  <body>
+      <% if @blog.errors.any? %>
+        <div id="error_explanation" class="alert alert-danger">
+          <h2><%= pluralize(@blog.errors.count, "error") %> prohibited this post from being saved:</h2>
+          <ul>
+          <% @blog.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+    <%= form_for @blog do |form| %>
+      <div class="field">
+        <%= form.label :title %>
+        <%= form.text_field :title, id: :title %>
+      </div>
+      <div class="field">
+        <%= form.label :image %>
+        <%= form.text_area :image, id: :image %>
+      </div>
 
-  <div class="field">
-    <%= form.label :text %>
-    <%= form.text_area :text, id: :text %>
-  </div>
+      <div class="field">
+        <%= form.label :text %>
+        <%= form.text_area :text, id: :text %>
+      </div>
 
-  <div class="actions">
-    <%= form.submit "投稿する" %>
-  </div>
-<% end %>
-</body>
+      <div class="actions">
+        <%= form.submit "投稿する" %>
+      </div>
+    <% end %>
+  </body>
 </html>
